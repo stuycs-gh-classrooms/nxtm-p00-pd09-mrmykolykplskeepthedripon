@@ -70,7 +70,10 @@ Describe what your drag simulation will look like. Explain how it will be setup,
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
---- Each orb has its own Aura amounnt determening its overall atractiveness out of three tiers. 1. No Aura(Moves towards [Yes Aura]) 2. Yes Aura(Moves away from [No Aura] & does't move away from [Neutral]) 3.Neutral (Moves towards [Yes Aura])
+--- Each orb has its own Aura amounnt determening its overall Aura Level out of three tiers. 
+  1. Auraless (Moves towards [Aura]) 2.
+  2. Yes Aura (Moves away from [Auraless] & does't move away from [NPC])
+  3. NPC (Moves towards [Aura])
 
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.

@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/rXX1_Uiw)
 ## Project 00
 ### NeXTCS
-### Period: 9
+### Period: 
 ## Name0: Nikolas
 ## Name1: Ryan
 ## Name2: Mishka
@@ -27,7 +27,7 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: 
+#### Custom Force: Aura
 
 ### Forumla
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
@@ -36,50 +36,43 @@ YOUR ANSWER HERE
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - YOUR ANSWER HERE
+  - Gravity
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - YOUR ANSWER HERE
+  - Integer measuring atrcactivenes
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - YOUR ANSWER HERE
+  - No
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - YOUR ANSWER HERE
+  - Yes (atraction or repeling)
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  - YOUR ANSWER HERE
+  - No, we will be borrowing values from already existing variables
 
 --- 
 
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 
---- 
+--- Use force between two objects to influence objects motions based on each other
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
---- 
+--- Generate a spring connected every two OrbNodes and apply spring force to them. They should move further away due to other forces (Aura) then move back together via spring pull
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
---- 
+--- Generate two seperate spaces in the canvas (one with drag and one without) apply drag by addding force that reduces velocity of Orb when in one of the spaces.
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
---- 
+--- Each orb has its own Aura amounnt determening its overall atractiveness out of three tiers. 1. No Aura(Moves towards [Yes Aura]) 2. Yes Aura(Moves away from [No Aura] & does't move away from [Neutral]) 3.Neutral (Moves towards [Yes Aura])
 
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
+Generates everything generated in other simulations and applys all forces to Orbs.

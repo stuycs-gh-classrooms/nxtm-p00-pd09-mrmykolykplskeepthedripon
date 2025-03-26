@@ -32,7 +32,7 @@ All projects will require the following:
 ### Forumla
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-YOUR ANSWER HERE
+Size/Mass = Aura
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?

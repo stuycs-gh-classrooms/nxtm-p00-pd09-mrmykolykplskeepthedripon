@@ -13,6 +13,7 @@ float  SPRING_K = 0.005;
 int BOUNCE = 0;
 int GRAVITY = 1;
 int DRAGF = 2;
+int SPRING = 3;
 boolean[] toggles = new boolean[5];
 String[] modes = {"Bounce", "Gravity", "Drag", "Spring", "Attraction"};
 
@@ -26,6 +27,7 @@ void setup() {
   earth = new FixedOrb(width/2, height * 200, 1, 20000);
   sim = new OrbList();
   sim.populate(NUM_ORBS, true);
+  
 }//setup
 
 void draw() {

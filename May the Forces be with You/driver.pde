@@ -2,7 +2,6 @@
 //add fixed orb gravitational pull
 //better interface with simulation indicator
 
-
 int NUM_ORBS = 10;
 int MIN_SIZE = 10;
 int MAX_SIZE = 60;
@@ -32,6 +31,8 @@ void setup() {
   earth = new FixedOrb(width/2, height * 200, 1, 20000);
   sim = new OrbList();
   sim.populate(NUM_ORBS, true);
+  
+  toggles[BOUNCE] = true;
 }//setup
 
 void draw() {
@@ -78,17 +79,20 @@ void keyPressed() {
 
 void SimulationOne() {
   toggles[GRAVITY] = !toggles[GRAVITY];
-  toggles[BOUNCE] = true;
+  toggles[SPRING] = false;
+  toggles[DRAGF] = false;
 }
 
 void SimulationTwo() {
   toggles[SPRING] = !toggles[SPRING];
-  toggles[BOUNCE] = true;
+  toggles[DRAGF] = false;
+  toggles[GRAVITY] = false;
 }
 
 void SimulationThree() {
   toggles[DRAGF] = !toggles[DRAGF];
-  toggles[BOUNCE] = true;
+  toggles[GRAVITY] = false;
+  toggles[SPRING] = false;
 }
 
 

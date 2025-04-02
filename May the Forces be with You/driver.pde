@@ -1,3 +1,8 @@
+//simulations turn off all other forces
+//add fixed orb gravitational pull
+//better interface with simulation indicator
+
+
 int NUM_ORBS = 10;
 int MIN_SIZE = 10;
 int MAX_SIZE = 60;
@@ -41,26 +46,22 @@ void draw() {
   if (toggles[SPRING]) {
     sim.applySprings(SPRING_LENGTH, SPRING_K);
   }
-  
-  
-  
-  
-if (toggles[DRAGF]) {
-  noFill();
-  stroke(0,0,0);
-  rect(0,height/2, width, height/2 ,0);
-  
-  for (int i = 0; i < NUM_ORBS; i++) {
-    if (sim.list[i].center.y > height/2) {
-      PVector drag = sim.list[i].getDragForce(D_COEF);
-      sim.list[i].applyForce(drag);
+
+
+
+
+  if (toggles[DRAGF]) {
+    noFill();
+    stroke(0, 0, 0);
+    rect(0, height/2, width, height/2, 0);
+
+    for (int i = 0; i < NUM_ORBS; i++) {
+      if (sim.list[i].center.y > height/2) {
+        PVector drag = sim.list[i].getDragForce(D_COEF);
+        sim.list[i].applyForce(drag);
+      }
     }
   }
-}
-  
-  
-  
-  
 }//mousePressed
 
 void keyPressed() {
@@ -70,22 +71,24 @@ void keyPressed() {
   if (key == '2') {
     SimulationTwo();
   }
-    if (key == '3') {
+  if (key == '3') {
     SimulationThree();
   }
 }//keyPressed
 
 void SimulationOne() {
   toggles[GRAVITY] = !toggles[GRAVITY];
-  toggles[BOUNCE] = !toggles[BOUNCE];
+  toggles[BOUNCE] = true;
 }
 
 void SimulationTwo() {
   toggles[SPRING] = !toggles[SPRING];
+  toggles[BOUNCE] = true;
 }
 
 void SimulationThree() {
   toggles[DRAGF] = !toggles[DRAGF];
+  toggles[BOUNCE] = true;
 }
 
 

@@ -49,7 +49,14 @@ class OrbList {
       list[i].applyForce(gforce);
     }
   }//applySprings
-
+  
+    void applyDrag(Orb other, float gConstant) {
+    for (int i = 0; i< list.length; i++) {
+      PVector dragForce = list[i].getDragForce(gConstant);
+      list[i].applyForce(dragForce);
+    }
+  }
+   
   void run(boolean bounce) {
     for (int i = 0; i<list.length; i++) {
       list[i].move(bounce);
@@ -96,4 +103,5 @@ class OrbList {
       }
     }
   }
+  
 }//OrbList

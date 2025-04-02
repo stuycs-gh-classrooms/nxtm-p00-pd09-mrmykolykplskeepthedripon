@@ -45,18 +45,18 @@ void draw() {
   
   
   
-  if (toggles[DRAGF]) {
-    noStroke();
-    fill(100, 200, 255);
-    rect(0, height/2, width, height/2);
-    for (int i = 0; i<NUM_ORBS; i++) {
-      if (sim[i].center.y >height/2) {
-        int drag = sim[i].getDragForce(D_COEF);
-        sim[i].applyForce(drag);
-      }
+if (toggles[DRAGF]) {
+  noFill();
+  stroke(0,0,0);
+  rect(0,height/2, width, height/2 ,0);
+  
+  for (int i = 0; i < NUM_ORBS; i++) {
+    if (sim.list[i].center.y > height/2) {
+      PVector drag = sim.list[i].getDragForce(D_COEF);
+      sim.list[i].applyForce(drag);
     }
   }
-  
+}
   
   
   
@@ -69,6 +69,9 @@ void keyPressed() {
   }
   if (key == '2') {
     SimulationTwo();
+  }
+    if (key == '3') {
+    SimulationThree();
   }
 }//keyPressed
 

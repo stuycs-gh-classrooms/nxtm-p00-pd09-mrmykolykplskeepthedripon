@@ -27,7 +27,6 @@ void setup() {
   earth = new FixedOrb(width/2, height * 200, 1, 20000);
   sim = new OrbList();
   sim.populate(NUM_ORBS, true);
-  
 }//setup
 
 void draw() {
@@ -39,11 +38,37 @@ void draw() {
     sim.applyGravity(earth, GRAVITY);
   }
   sim.run(toggles[BOUNCE]);
+  if (toggles[SPRING]) {
+    sim.applySprings(SPRING_LENGTH, SPRING_K);
+  }
+  
+  
+  
+  
+  if (toggles[DRAGF]) {
+    noStroke();
+    fill(100, 200, 255);
+    rect(0, height/2, width, height/2);
+    for (int i = 0; i<NUM_ORBS; i++) {
+      if (sim[i].center.y >height/2) {
+        int drag = sim[i].getDragForce(D_COEF);
+        sim[i].applyForce(drag);
+      }
+    }
+  }
+  
+  
+  
+  
+  
 }//mousePressed
 
 void keyPressed() {
   if (key == '1') {
     SimulationOne();
+  }
+  if (key == '2') {
+    SimulationTwo();
   }
 }//keyPressed
 
@@ -52,6 +77,13 @@ void SimulationOne() {
   toggles[BOUNCE] = !toggles[BOUNCE];
 }
 
+void SimulationTwo() {
+  toggles[SPRING] = !toggles[SPRING];
+}
+
+void SimulationThree() {
+  toggles[DRAGF] = !toggles[DRAGF];
+}
 
 
 void displayMode() {

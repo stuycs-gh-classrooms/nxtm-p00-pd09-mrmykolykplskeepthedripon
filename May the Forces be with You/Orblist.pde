@@ -50,6 +50,13 @@ class OrbList {
     }
   }//applySprings
   
+  void applyAttraction(OrbNode other, float G){
+    for (int i = 0; i< list.length; i++) {
+      PVector aforce = list[i].getAttraction(other, G);
+      list[i].applyForce(aforce);
+    }
+  }
+  
     void applyDrag(Orb other, float gConstant) {
     for (int i = 0; i< list.length; i++) {
       PVector dragForce = list[i].getDragForce(gConstant);

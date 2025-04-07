@@ -1,4 +1,3 @@
-
 class Orb {
 
   //instance variables
@@ -59,7 +58,6 @@ class Orb {
 
   PVector getGravity(Orb other, float G) {
     float strength = G * mass*other.mass;
-    //dont want to divide by 0!
     float r = max(center.dist(other.center), MIN_SIZE);
     strength = strength/ pow(r, 2);
     PVector force = other.center.copy();
@@ -67,6 +65,24 @@ class Orb {
     force.mult(strength);
     return force;
   }
+  
+  PVector getAttraction(OrbNode other, float G){
+    float aura = mass / bsize;
+    int attraction;
+    if(aura > 60){
+      attraction = 1;
+    }
+    if(aura<30){
+      attraction = -1;
+    }
+    else{
+      attraction = 0;
+    }
+    PVector force = this.getGravity(other, G);
+    force.mult(attraction);
+    return force;
+  }
+    
 
   //spring force between calling orb and other
   PVector getSpring(Orb other, int springLength, float springK) {

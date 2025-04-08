@@ -12,12 +12,13 @@ float  SPRING_K = 0.005;
 
 int BOUNCE = 0;
 int GRAVITY = 1;
-int DRAGF = 2;
-int SPRING = 3;
+int DRAGF = 3;
+int SPRING = 2;
 int ATTRACT = 4;
-boolean[] toggles = new boolean[5];
-boolean[] sims = new boolean[5];
-String[] modes = {"Bounce", "Gravity", "Drag", "Spring", "Attraction"};
+int COMBO = 5;
+boolean[] toggles = new boolean[6];
+boolean[] sims = new boolean[6];
+String[] modes = {"Bounce", "Gravity", "Spring", "Drag", "Attraction", "Combo"};
 String[] simss = {"Gravity", "Spring Force", "Drag", "Attractiveness", "Combo"};
 
 FixedOrb earth;
@@ -82,6 +83,9 @@ void keyPressed() {
   if(key=='4'){
     SimulationFour();
   }
+  if(key == '5'){
+    SimulationFive();
+  }
 }//keyPressed
 
 void SimulationOne() {
@@ -89,10 +93,7 @@ void SimulationOne() {
   toggles[SPRING] = false;
   toggles[DRAGF] = false;
   toggles[ATTRACT] = false;
-  sims[0] = !sims[0];
-  sims[1] = false;
-  sims[2] = false;
-  sims[3] = false;
+  toggles[COMBO] = false;
 }
 
 void SimulationTwo() {
@@ -100,10 +101,7 @@ void SimulationTwo() {
   toggles[DRAGF] = false;
   toggles[GRAVITY] = false;
   toggles[ATTRACT] = false;
-  sims[1] = !sims[1];
-  sims[0] = false;
-  sims[2] = false;
-  sims[3] = false;
+  toggles[COMBO] = false;
 }
 
 void SimulationThree() {
@@ -111,10 +109,7 @@ void SimulationThree() {
   toggles[GRAVITY] = false;
   toggles[SPRING] = false;
   toggles[ATTRACT] = false;
-  sims[2] = !sims[2];
-  sims[0] = false;
-  sims[1] = false;
-  sims[3] = false;
+   toggles[COMBO] = false;
 }
 
 void SimulationFour(){
@@ -122,10 +117,22 @@ void SimulationFour(){
   toggles[GRAVITY] = false;
   toggles[SPRING] = false;
   toggles[DRAGF] = false;
-  sims[3] = !sims[3];
-  sims[0] = false;
-  sims[1] = false;
-  sims[2] = false;x
+  toggles[COMBO] = false;
+
+}
+
+void SimulationFive(){
+  toggles[DRAGF] = false;
+  toggles[GRAVITY] = false;
+  toggles[ATTRACT] = false;
+  toggles[SPRING] = false;
+  toggles[COMBO] = false;
+  toggles[ATTRACT] = !toggles[ATTRACT];
+  toggles[GRAVITY] = !toggles[GRAVITY];
+  toggles[SPRING] = !toggles[SPRING];
+  toggles[DRAGF] = !toggles[DRAGF];
+  toggles[COMBO] = !toggles[COMBO];
+
 }
 
 void displayMode() {
@@ -158,11 +165,7 @@ void displayMode() {
     else{
       fill(255,0,0);
     }
-    
-    float u = textWidth(simss[i]);
-    rect(y,20, u+5, 20);
-    fill(0);
-    text(simss[i], y+2, 22);
-    y+=u+5;
   }
+    
+
 }//display
